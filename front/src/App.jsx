@@ -4,32 +4,22 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="bg">
+      <h1 className="tarot-title">TAROT</h1>
+      <div className="card-row">
+        {/* 왼쪽 카드 (왼쪽 3cm 이동) */}
+        <div className="tarot-card left-card">
+          <img src="/card_back.png" alt="카드 뒷면" className="card-image" />
+        </div>
+        {/* 오른쪽 카드 (오른쪽 3cm 이동) */}
+        <div className="tarot-card right-card">
+          <img src="/card_back2.png" alt="카드 뒷면" className="card-image" />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <button className="start-btn">START</button>
+    </div>
+  );
 }
 
-export default App
+export default App;
