@@ -1,8 +1,8 @@
-🔮 TarotGPT 서비스
+## 🔮 TarotGPT 서비스
 
 TarotGPT는 사용자가 선택한 타로 카드를 기반으로 LLM이 점괘를 해석하고, 그 내용에 대해 자연스러운 대화를 나눌 수 있는 AI 기반 타로 챗봇 서비스입니다.
 
-✨ 핵심 기능
+## ✨ 핵심 기능
 
 타로 카드 선택 및 해석
 
@@ -16,19 +16,19 @@ LLM을 통해 카드의 의미를 상황에 맞게 해석
 
 친절하고 자연스러운 챗봇 응답 제공
 
-🚀 기술 스택
+## 🚀 기술 스택
 
-프론트엔드
+### 프론트엔드
 
-React (Vite)
+- React (Vite)
 
-Tailwind CSS
+- Tailwind CSS
 
-백엔드
+### 백엔드
 
-Fast API
+- Fast API
 
-Google AI API
+- Google AI API
 
-🌐 구조도
+## 🌐 구조도
 ![alt text](image.png)
