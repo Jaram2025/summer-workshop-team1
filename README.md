@@ -18,17 +18,17 @@ LLM을 통해 카드의 의미를 상황에 맞게 해석
 
 ## 🚀 기술 스택
 
-- 프론트엔드
+### 프론트엔드
 
-React (Vite)
+- React (Vite)
 
-Tailwind CSS
+- Tailwind CSS
 
-- 백엔드
+### 백엔드
 
-Fast API
+- Fast API
 
-Google AI API
+- Google AI API
 
 ## 🌐 구조도
 ![alt text](image.png)
