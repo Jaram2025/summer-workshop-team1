@@ -1,12 +1,34 @@
-# React + Vite
+🔮 TarotGPT 서비스
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TarotGPT는 사용자가 선택한 타로 카드를 기반으로 LLM이 점괘를 해석하고, 그 내용에 대해 자연스러운 대화를 나눌 수 있는 AI 기반 타로 챗봇 서비스입니다.
 
-Currently, two official plugins are available:
+✨ 핵심 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+타로 카드 선택 및 해석
 
-## Expanding the ESLint configuration
+사용자가 선택한 카드를 기반으로 맞춤형 결과 제공
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+LLM을 통해 카드의 의미를 상황에 맞게 해석
+
+실시간 AI 챗봇 대화
+
+카드의 해석 결과에 대한 추가 질문 가능
+
+친절하고 자연스러운 챗봇 응답 제공
+
+🚀 기술 스택
+
+프론트엔드
+
+React (Vite)
+
+Tailwind CSS
+
+백엔드
+
+Fast API
+
+Google AI API
+
+🌐 구조도
+![alt text](image.png)
