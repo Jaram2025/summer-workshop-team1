@@ -1,0 +1,89 @@
+.bg {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/background.png'); /* public 폴더 사용! */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* padding-top을 줄여서 전체적으로 2cm 위로! */
+    padding-top: 5vh; /* (예: 원래 15vh였으면 2cm만큼 줄여서 5vh~10vh로, 조정 가능) */
+  }
+  
+  .tarot-title {
+    color: white;
+    font-size: 4rem;
+    letter-spacing: 0.2em;
+    text-shadow: 0 4px 16px #222;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 3rem;
+  }
+  
+  .card-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 1rem;
+    position: relative;
+  }
+  
+  .tarot-card {
+    width: 170px;
+    height: 260px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #181825 80%, #343353 100%);
+    box-shadow: 0 8px 32px #000c;
+    border: 2.5px solid #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: #f3f3f3;
+    cursor: pointer;
+    transition: transform 0.15s;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .left-card {
+    left: -1cm;
+  }
+  
+  .right-card {
+    left: 1cm;
+  }
+  
+  .tarot-card:hover {
+    transform: scale(1.04) rotate(-2deg);
+  }
+  
+  .card-image {
+    width: 154px;
+    height: 230px;
+    object-fit: contain;
+    display: block;
+  }
+  
+  .start-btn {
+    margin-top: 3.5rem;              /* 카드 아래 여백 */
+    padding: 1rem 3.2rem;
+    border-radius: 2rem;
+    border: none;
+    background: linear-gradient(90deg, #6541f8 40%, #e964e4 100%);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    box-shadow: 0 4px 24px #0006;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: 'Cinzel', serif;
+  }
+  .start-btn:hover {
+    transform: scale(1.07) translateY(-3px);
+    box-shadow: 0 10px 32px #9e6bff88;
+  }
