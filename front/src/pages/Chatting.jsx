@@ -87,7 +87,7 @@ export default ()=>{
                         return(
                             <div key={idx} className="commentBox">
                                 <div className="comment modelComment">{comment.context}</div>
-                                {comment.context=="말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요" && <button onClick={() => {navigate("/result", { state: commentRecord });}} className="gotoPickCardBtn">카드 뽑으러 가기</button>}
+                                {comment.context=="말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요" && <button onClick={() => {navigate("/select", { state: commentRecord[1].context });}} className="gotoPickCardBtn">카드 뽑으러 가기</button>}
                             </div>
                         )
                     }
