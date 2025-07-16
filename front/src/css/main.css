@@ -18,9 +18,25 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 2cm;         /* 너가 원하는 만큼 (또는 vh/px) */
   box-sizing: border-box;
   overflow: hidden;
+}
+
+/* 네모 테두리 프레임 */
+.tarot-frame {
+  width: 650px;
+  min-height: 480px;
+  border: 2.5px solid #e5e6ea;
+  border-radius: 18px;
+  background: transparent;
+  box-shadow: 0 0 24px 2px #222a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  position: relative;
+
 }
   
   .tarot-title {
@@ -29,7 +45,8 @@ html, body {
     letter-spacing: 0.2em;
     text-shadow: 0 4px 16px #222;
     font-family: 'Cinzel', serif;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+    transform: translateY(-1cm);
   }
   
   .card-row {
