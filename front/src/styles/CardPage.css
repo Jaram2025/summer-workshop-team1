@@ -134,3 +134,23 @@
   cursor: not-allowed;
   transform: scale(1);
 }
+
+/* 선택된 카드와 이름 묶음 */
+.selected-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px; /* 카드와 이름 사이 간격 */
+}
+
+/* 카드 이름 */
+.card-name {
+  color: white;
+  font-family: 'Cinzel', serif; /* 예시 폰트1 - 웅장하고 고풍스러운 느낌 */
+  
+  font-size: 1.0rem; /* 글씨 크기 확대 */
+  font-weight: 700; /* 글씨 두께를 더 굵게 */
+  margin: 0;
+  white-space: nowrap;
+}
