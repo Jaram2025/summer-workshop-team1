@@ -11,10 +11,12 @@ export default ()=>{
     }
     const navigate = useNavigate();
     const [input, setInput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [commentRecord,setCommentRecord] = useState([{type:"model",context:"안녕하세요! 타로를 봐드리겠습니다. 고민거리를 말해주세요!"}]);
     const scrollRef = useRef(null);
     const appendComment = async (e)=>{
         const question = input;
+        setIsLoading(true);
         e.preventDefault();
         if (!input.trim()) return;
         setCommentRecord((prev)=>[...prev, {type:"user",context:input}]);
@@ -23,6 +25,7 @@ export default ()=>{
         await sleep(1000)
         setCommentRecord((prev)=>[...prev.slice(0,prev.length-1),{type:"client",context:"말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요"}])
         //await sendQuery(question,commentRecord);
+        setIsLoading(false);
     }
     
     
@@ -84,7 +87,7 @@ export default ()=>{
                         return(
                             <div key={idx} className="commentBox">
                                 <div className="comment modelComment">{comment.context}</div>
-                                {comment.context=="말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요" && <button onClick={() => {navigate('/select')}} className="gotoPickCardBtn">카드 뽑으러 가기</button>}
+                                {comment.context=="말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요" && <button onClick={() => {navigate("/result", { state: commentRecord });}} className="gotoPickCardBtn">카드 뽑으러 가기</button>}
                             </div>
                         )
                     }
@@ -93,7 +96,9 @@ export default ()=>{
             </div>
             <form className="promptBox" onSubmit={appendComment}>
                 <input className="prompt-input" placeholder="질문을 입력하세요" type="text" value={input} onChange={(e)=>{setInput(e.target.value)}}/>
-                <button type="submit" className="prompt-send" >전송</button>
+                <button type="submit" className="prompt-send" disabled={isLoading}>
+                    {isLoading ? "생성 중..." : "전송"}
+                </button>
             </form>
         </div>
     )

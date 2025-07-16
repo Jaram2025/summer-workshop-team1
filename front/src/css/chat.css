@@ -18,12 +18,12 @@
     overflow-y: auto;
 }
 .promptBox{
-width:80%;
-height:3rem;
-display:flex;
-flex-direction:row;
-justify-content:space-between;
-margin:1rem;
+    width:80%;
+    height:3rem;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    margin:1rem;
 }
 
 .chatContainer{
@@ -79,10 +79,9 @@ border-radius:1rem;
 }
 
 .commentBoxContainer{
-display:flex;
-flex-direction:column;
-width:auto;
-
+    display:flex;
+    flex-direction:column;
+    width:auto;
 }
 
 .userComment{

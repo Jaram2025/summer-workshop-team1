@@ -5,7 +5,6 @@ import Chatting from './pages/Chatting';
 import Main from './pages/Main';
 import CardPage from './pages/CardSelector';
 import NotFoundPage from './pages/NotFoundPage';
-import CardSelector from './pages/CardSelector';
 import Result from './pages/Result';
 
 
