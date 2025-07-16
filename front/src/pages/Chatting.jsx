@@ -7,12 +7,13 @@ export default ()=>{
     const [input, setInput] = useState("");
     const [commentRecord,setCommentRecord] = useState([{type:"model",context:"안녕하세요! 타로를 봐드리겠습니다. 어떤운을 보시겠어요?(예: 연애운,학업운,취업운,금전운 등)"}]);
     const scrollRef = useRef(null);
-    const appendComment = (e)=>{
+    const appendComment = async (e)=>{
+        const question = input;
         e.preventDefault();
         if (!input.trim()) return;
         setCommentRecord((prev)=>[...prev, {type:"user",context:input}]);
-
         setInput('');
+        await sendQuery(question,commentRecord);
     }
     
     
@@ -22,14 +23,14 @@ export default ()=>{
     }, [commentRecord]);
     
 
-    const sendQuery = async () => {
+    const sendQuery = async (question,context) => {
         const payload = {
         cards: [1, 2, 3],
-        context: commentRecord,
+        context: commentRecord.map(c => ({ content: c.context, type: c.type })),
         question: input
     };
 
-    const response = await fetch("", {
+    const response = await fetch("http://localhost:8000/tarot/question", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -38,7 +39,7 @@ export default ()=>{
         });
         
         const data = await response.json();
-        setCommentRecord((prev)=>[...prev,{type:'model',context:data}])
+        setCommentRecord((prev)=>[...prev,{type:'model',context:data}]);
         console.log(data);
     };
 
