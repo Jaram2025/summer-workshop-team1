@@ -57,7 +57,11 @@ function CardPage() { // props로 question을 받습니다.
   const requestBody = {
       cards: cardIds,
       question: question, // props로 받은 question 사용
-    };
+  };
+  const resultData = {
+    cards: selectedCards,
+    question: question,
+  }
 
   // 카드 3장이 모두 선택되었을 때 백엔드로 요청을 보내는 함수
   const sendTarotRequest = async () => {
@@ -97,7 +101,7 @@ function CardPage() { // props로 question을 받습니다.
   useEffect(() => {
     // 3장이 모두 선택되면 sendTarotRequest 함수 호출
     if (selectedCards.length === 3) {
-      navigate("/result", { state: requestBody});
+      navigate("/result", { state: resultData});
       
     }
   }, [selectedCards, question]); // selectedCards와 question이 변경될 때만 실행
