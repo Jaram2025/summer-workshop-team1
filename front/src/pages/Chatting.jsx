@@ -39,7 +39,7 @@ export default ()=>{
         });
         
         const data = await response.json();
-        setCommentRecord((prev)=>[...prev,{type:'model',context:data}]);
+        setCommentRecord((prev)=>[...prev,{type:'model',context:data}])
         console.log(data);
     };
 
