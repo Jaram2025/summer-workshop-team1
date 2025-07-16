@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import Chatting from './pages/Chatting';
 import Main from './pages/Main';
+import CardPage from './pages/CardSelector';
 import NotFoundPage from './pages/NotFoundPage';
 import CardSelector from './pages/CardSelector';
 
@@ -14,9 +15,9 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/chat" element={<Chatting />} />
-        <Route path="*" element={<NotFoundPage />} />
-        <Route path="/cardSelector" element={<CardSelector />} />
+        <Route path="/chat" element={<Chatting />} />
+        <Route path="/select" element={<CardPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
     </div>
   )
