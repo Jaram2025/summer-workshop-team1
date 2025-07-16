@@ -64,6 +64,7 @@ border-radius:1rem;
 
 .commentBox{
     display:flex;
+    flex-direction:column;
     border-radius:1rem;
     animation: fadein 0.6s ease-out forwards;
 }
@@ -94,3 +95,7 @@ width:auto;
     background-color:white;
 }
 
+.gotoPickCardBtn{
+    margin-top:5rem;
+
+}
