@@ -19,8 +19,9 @@ export default ()=>{
         if (!input.trim()) return;
         setCommentRecord((prev)=>[...prev, {type:"user",context:input}]);
         setInput('');
+        setCommentRecord((prev)=>[...prev,{type:"client",context:"답변을 생각하고 있습니다..."}])
         await sleep(1000)
-        setCommentRecord((prev)=>[...prev,{type:"client",context:"말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요"}])
+        setCommentRecord((prev)=>[...prev.slice(0,prev.length-1),{type:"client",context:"말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요"}])
         //await sendQuery(question,commentRecord);
     }
     
@@ -83,7 +84,7 @@ export default ()=>{
                         return(
                             <div key={idx} className="commentBox">
                                 <div className="comment modelComment">{comment.context}</div>
-                                {idx === 2 && <button onClick={() => {navigate('/select')}} className="gotoPickCardBtn">카드 뽑으러 가기</button>}
+                                {comment.context=="말씀 해주셔서 감사합니다! 고민을 생각하며 카드 3장을 뽑아주세요" && <button onClick={() => {navigate('/select')}} className="gotoPickCardBtn">카드 뽑으러 가기</button>}
                             </div>
                         )
                     }
