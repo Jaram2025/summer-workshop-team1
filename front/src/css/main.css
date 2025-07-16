@@ -1,17 +1,27 @@
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;   /* 스크롤바 안 보이게 */
+  box-sizing: border-box;
+}
+
+/* 2. 배경 div도 100vh, 오버플로우 숨김 */
 .bg {
-    width: 100vw;
-    height: 100vh;
-    background-image: url('/background.png'); /* public 폴더 사용! */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    /* padding-top을 줄여서 전체적으로 2cm 위로! */
-    padding-top: 5vh; /* (예: 원래 15vh였으면 2cm만큼 줄여서 5vh~10vh로, 조정 가능) */
-  }
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2cm;         /* 너가 원하는 만큼 (또는 vh/px) */
+  box-sizing: border-box;
+  overflow: hidden;
+}
   
   .tarot-title {
     color: white;
