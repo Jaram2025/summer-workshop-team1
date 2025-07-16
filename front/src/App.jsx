@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import CardPage from './pages/CardSelector';
 import NotFoundPage from './pages/NotFoundPage';
 import CardSelector from './pages/CardSelector';
+import Result from './pages/Result';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Route path="/" element={<Main />} />
         <Route path="/chat" element={<Chatting />} />
         <Route path="/select" element={<CardPage />} />
-      <Route path="*" element={<NotFoundPage />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="*" element={<NotFoundPage />} />
     </Routes>
     </div>
   )
