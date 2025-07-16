@@ -5,16 +5,16 @@ import '../css/chat.css'
 
 export default ()=>{
     const [input, setInput] = useState("");
-    const [commentRecord,setCommentRecord] = useState([{type:"user",context:"첫질문"},{type:"model",context:"첫 질문 대답"}]);
+    const [commentRecord,setCommentRecord] = useState([{type:"model",context:"안녕하세요! 타로를 봐드리겠습니다. 어떤운을 보시겠어요?(예: 연애운,학업운,취업운,금전운 등)"}]);
     const scrollRef = useRef(null);
     const appendComment = (e)=>{
         e.preventDefault();
         if (!input.trim()) return;
         setCommentRecord((prev)=>[...prev, {type:"user",context:input}]);
+
         setInput('');
     }
     
-
     
     useEffect(() => {
         if (!scrollRef.current) return;
