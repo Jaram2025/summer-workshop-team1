@@ -76,6 +76,7 @@ border-radius:1rem;
     padding:1rem;
     border-radius:1rem;
     max-width:50%;
+    color:#000000;
 }
 
 .commentBoxContainer{
@@ -91,7 +92,7 @@ border-radius:1rem;
 }
 
 .modelComment{
-    background-color:white;
+    background-color: #ffffff;
 }
 
 .gotoPickCardBtn{
