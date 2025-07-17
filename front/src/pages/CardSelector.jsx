@@ -69,6 +69,7 @@ function CardPage() { // props로 question을 받습니다.
     try {
       const response = await fetch('http://localhost:8000/tarot/question', {
         method: 'POST',
+
          headers: {
            'Content-Type': 'application/json',
          },
@@ -98,7 +99,8 @@ function CardPage() { // props로 question을 받습니다.
   useEffect(() => {
     // 3장이 모두 선택되면 sendTarotRequest 함수 호출
     if (selectedCards.length === 3) {
-      sendTarotRequest(requestBody);
+      navigate("/result", { state: resultData });
+      // sendTarotRequest(requestBody);
     }
   }, [selectedCards, question]); // selectedCards와 question이 변경될 때만 실행
 
