@@ -7,18 +7,23 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Result() {
     const [result, setResult] = useState("");
+<<<<<<< HEAD
     const [isLoading,setIsLoading] = useState(false);
     const sendTarotRequest = async (requestBody) => {
         // 선택된 카드들의 ID만 추출
         setIsLoading(true);
 
         console.log("백엔드로 전송할 데이터:", requestBody);
+=======
+    const sendTarotRequest = async () => {
+        console.log("백엔드로 전송할 데이터:", requestBody); 
+>>>>>>> bdaec6efc23458c5871ac641d251168506c3903e
 
         try {
             const response = await fetch('http://prox.g4tsby.xyz:8000/tarot/question', {
-              method: 'POST',
+                method: 'POST',
                 headers: {
-                'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -26,7 +31,6 @@ export default function Result() {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-
             return await response.json(); // result = 를 const data = 로 변경
             
             
@@ -38,18 +42,20 @@ export default function Result() {
             }
 
         };
-        
+
   const scrollRef = useRef(null);
   const resultData = useLocation().state;
-  
 
-  const cards = [
-    { name: resultData.cards[0].name, image: resultData.cards[0].backImage },
-    { name: resultData.cards[1].name, image: resultData.cards[1].backImage },
-    { name: resultData.cards[2].name, image: resultData.cards[2].backImage }
-  ];
-  
+
+    const cards = [
+        { name: resultData.cards[0].name, image: resultData.cards[0].backImage },
+        { name: resultData.cards[1].name, image: resultData.cards[1].backImage },
+        { name: resultData.cards[2].name, image: resultData.cards[2].backImage }
+    ];
+    
+    // This is the correct place for the initial API call
     useEffect(() => {
+
     const cardDesc = sendTarotRequest({
       cards: resultData.cards.map(card => card.id),
       question: resultData.question,
