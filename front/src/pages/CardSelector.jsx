@@ -6,29 +6,26 @@ import {useLocation, useNavigate } from 'react-router-dom';
 
 // 카드 데이터는 그대로 사용
 const initialCards = [
-  { id: 0,  name: 'The Fool',             frontImage: '/card_back2.png', backImage: '/card_01.png' },
-  { id: 1,  name: 'The Magician',        frontImage: '/card_back2.png', backImage: '/card_02.png' },
-  { id: 2,  name: 'The High Priestess',  frontImage: '/card_back2.png', backImage: '/card_03.png' },
-  { id: 3,  name: 'The Empress',          frontImage: '/card_back2.png', backImage: '/card_04.png' },
-  { id: 4,  name: 'The Emperor',          frontImage: '/card_back2.png', backImage: '/card_05.png' },
-  { id: 5,  name: 'The Hierophant',       frontImage: '/card_back2.png', backImage: '/card_06.png' },
-  { id: 6,  name: 'The Lovers',           frontImage: '/card_back2.png', backImage: '/card_07.png' },
-  { id: 7,  name: 'The Chariot',          frontImage: '/card_back2.png', backImage: '/card_08.png' },
-  { id: 8,  name: 'Strength',             frontImage: '/card_back2.png', backImage: '/card_09.png' },
-  { id: 9,  name: 'The Hermit',           frontImage: '/card_back2.png', backImage: '/card_10.png' },
-  { id: 10, name: 'Wheel of Fortune',     frontImage: '/card_back2.png', backImage: '/card_11.png' },
-  { id: 11, name: 'Justice',             frontImage: '/card_back2.png', backImage: '/card_12.png' },
-  { id: 12, name: 'The Hanged Man',       frontImage: '/card_back2.png', backImage: '/card_13.png' },
+  { id: 0,  name: 'The Fool',             frontImage: '/card_back2.png', backImage: '/card_01.png' },
+  { id: 1,  name: 'The Magician',         frontImage: '/card_back2.png', backImage: '/card_02.png' },
+  { id: 2,  name: 'The High Priestess',   frontImage: '/card_back2.png', backImage: '/card_03.png' },
+  { id: 3,  name: 'The Empress',          frontImage: '/card_back2.png', backImage: '/card_04.png' },
+  { id: 4,  name: 'The Emperor',          frontImage: '/card_back2.png', backImage: '/card_05.png' },
+  { id: 5,  name: 'The Hierophant',       frontImage: '/card_back2.png', backImage: '/card_06.png' },
+  { id: 6,  name: 'The Lovers',           frontImage: '/card_back2.png', backImage: '/card_07.png' },
+  { id: 7,  name: 'The Chariot',          frontImage: '/card_back2.png', backImage: '/card_08.png' },
+  { id: 8,  name: 'Strength',             frontImage: '/card_back2.png', backImage: '/card_09.png' },
+  { id: 9,  name: 'The Hermit',           frontImage: '/card_back2.png', backImage: '/card_10.png' },
+  { id: 10, name: 'Wheel of Fortune',     frontImage: '/card_back2.png', backImage: '/card_11.png' },
+  { id: 11, name: 'Justice',              frontImage: '/card_back2.png', backImage: '/card_12.png' },
+  { id: 12, name: 'The Hanged Man',       frontImage: '/card_back2.png', backImage: '/card_13.png' },
   { id: 13, name: 'Death',                frontImage: '/card_back2.png', backImage: '/card_14.png' },
-  { id: 14, name: 'Temperance',           frontImage: '/card_back2.png', backImage: '/card_15.png' },
-  {
-    id: 15, name: 'The Devil',
-    frontImage: '/card_back2.png', backImage: '/card_16.png'
-  },
+  { id: 14, name: 'Temperance',           frontImage: '/card_back2.png', backImage: '/card_15.png' },
+  {id: 15, name: 'The Devil',             frontImage: '/card_back2.png', backImage: '/card_16.png'},
   { id: 16, name: 'The Tower',            frontImage: '/card_back2.png', backImage: '/card_17.png' },
-  { id: 17, name: 'The Star',             frontImage: '/card_back2.png', backImage: '/card_18.png' },
-  { id: 18, name: 'The Moon',             frontImage: '/card_back2.png', backImage: '/card_19.png' },
-  { id: 19, name: 'The Sun',             frontImage: '/card_back2.png', backImage: '/card_20.png' },
+  { id: 17, name: 'The Star',             frontImage: '/card_back2.png', backImage: '/card_18.png' },
+  { id: 18, name: 'The Moon',             frontImage: '/card_back2.png', backImage: '/card_19.png' },
+  { id: 19, name: 'The Sun',              frontImage: '/card_back2.png', backImage: '/card_20.png' },
   { id: 20, name: 'Judgement',            frontImage: '/card_back2.png', backImage: '/card_21.png' },
   { id: 21, name: 'The World',            frontImage: '/card_back2.png', backImage: '/card_22.png' },
 ];
@@ -71,7 +68,7 @@ function CardPage() { // props로 question을 받습니다.
 
     try {
       const response = await fetch('YOUR_BACKEND_API_URL', {
-        method: 'POST',
+        method: 'POST',
          headers: {
            'Content-Type': 'application/json',
          },
