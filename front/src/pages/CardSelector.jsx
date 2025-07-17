@@ -61,13 +61,13 @@ function CardPage() { // props로 question을 받습니다.
   }
 
   // 카드 3장이 모두 선택되었을 때 백엔드로 요청을 보내는 함수
-  const sendTarotRequest = async () => {
+  const sendTarotRequest = async (requestBody) => {
     // 선택된 카드들의 ID만 추출
 
     console.log("백엔드로 전송할 데이터:", requestBody);
 
     try {
-      const response = await fetch('YOUR_BACKEND_API_URL', {
+      const response = await fetch('http://localhost:8000/tarot/question', {
         method: 'POST',
          headers: {
            'Content-Type': 'application/json',
@@ -82,24 +82,23 @@ function CardPage() { // props로 question을 받습니다.
       const result = await response.json();
       console.log('요청 성공:', result);
 
-      // 요청 성공 후 2초 대기
-      await wait(2000); 
+      const updatedResultData = {
+        ...resultData,
+        result: result
+      };
 
-      // 다음 페이지로 이동하는 로직을 여기에 추가
-      console.log("2초 대기 후 다음 페이지로 이동합니다.");
+      navigate("/result", { state: updatedResultData });
       
      } catch (error) {
       console.error('요청 실패:', error);
      }
-
   };
 
   // 선택된 카드가 변경될 때마다 이펙트 실행
   useEffect(() => {
     // 3장이 모두 선택되면 sendTarotRequest 함수 호출
     if (selectedCards.length === 3) {
-      navigate("/result", { state: resultData});
-      
+      sendTarotRequest(requestBody);
     }
   }, [selectedCards, question]); // selectedCards와 question이 변경될 때만 실행
 
