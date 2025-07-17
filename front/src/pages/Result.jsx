@@ -7,17 +7,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Result() {
     const [result, setResult] = useState("");
-<<<<<<< HEAD
     const [isLoading,setIsLoading] = useState(false);
     const sendTarotRequest = async (requestBody) => {
         // 선택된 카드들의 ID만 추출
         setIsLoading(true);
 
         console.log("백엔드로 전송할 데이터:", requestBody);
-=======
-    const sendTarotRequest = async () => {
-        console.log("백엔드로 전송할 데이터:", requestBody); 
->>>>>>> bdaec6efc23458c5871ac641d251168506c3903e
 
         try {
             const response = await fetch('http://prox.g4tsby.xyz:8000/tarot/question', {
