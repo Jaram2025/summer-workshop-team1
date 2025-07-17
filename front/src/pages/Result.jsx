@@ -6,14 +6,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function Result() {
-    let result="";
+    const [result, setResult] = useState("");
     const sendTarotRequest = async () => {
         // 선택된 카드들의 ID만 추출
 
         console.log("백엔드로 전송할 데이터:", requestBody);
 
         try {
-            const response = await fetch('YOUR_BACKEND_API_URL', {
+            const response = await fetch('http://prox.g4tsby.xyz:8000/tarot/question', {
               method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +25,8 @@ export default function Result() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            result = await response.json();
+            const data = await response.json(); // result = 를 const data = 로 변경
+            setResult(data); // 상태 업데이트 추가
 
             // 다음 페이지로 이동하는 로직을 여기에 추가
             console.log("2초 대기 후 다음 페이지로 이동합니다.");
@@ -39,12 +40,20 @@ export default function Result() {
   const scrollRef = useRef(null);
   const resultData = useLocation().state;
   // 더미 데이터(실제 데이터로 대체 가능)
+  const requestBody = {
+  cards: resultData.cards.map(card => card.id),
+  question: resultData.question,
+  };
+
   const cards = [
     { name: resultData.cards[0].name, image: resultData.cards[0].backImage },
     { name: resultData.cards[1].name, image: resultData.cards[1].backImage },
     { name: resultData.cards[2].name, image: resultData.cards[2].backImage }
   ];
   
+    useEffect(() => {
+    sendTarotRequest();
+  }, []);
 
   function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
