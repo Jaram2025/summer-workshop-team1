@@ -7,8 +7,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Result() {
     const [result, setResult] = useState("");
-    const sendTarotRequest = async () => {
+    const [isLoading,setIsLoading] = useState(false);
+    const sendTarotRequest = async (requestBody) => {
         // 선택된 카드들의 ID만 추출
+        setIsLoading(true);
 
         console.log("백엔드로 전송할 데이터:", requestBody);
 
@@ -25,25 +27,21 @@ export default function Result() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = await response.json(); // result = 를 const data = 로 변경
-            setResult(data); // 상태 업데이트 추가
-
-            // 다음 페이지로 이동하는 로직을 여기에 추가
-            console.log("2초 대기 후 다음 페이지로 이동합니다.");
+            return await response.json(); // result = 를 const data = 로 변경
+            
             
             } catch (error) {
             console.error('요청 실패:', error);
+            }
+            finally{
+              setIsLoading(false);
             }
 
         };
         
   const scrollRef = useRef(null);
   const resultData = useLocation().state;
-  // 더미 데이터(실제 데이터로 대체 가능)
-  const requestBody = {
-  cards: resultData.cards.map(card => card.id),
-  question: resultData.question,
-  };
+  
 
   const cards = [
     { name: resultData.cards[0].name, image: resultData.cards[0].backImage },
@@ -52,25 +50,27 @@ export default function Result() {
   ];
   
     useEffect(() => {
-    sendTarotRequest();
+    const cardDesc = sendTarotRequest({
+      cards: resultData.cards.map(card => card.id),
+      question: resultData.question,
+    });
+    setResult(cardDesc);
   }, []);
 
-  function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    const navigate = useNavigate();
     const [input, setInput] = useState("");
     const [commentRecord,setCommentRecord] = useState([]);
-  const appendComment = async (e)=>{
-        const question = input;
-        e.preventDefault();
-        if (!input.trim()) return;
-        setCommentRecord((prev)=>[...prev, {type:"user",context:input}]);
-        setInput('');
-        setCommentRecord((prev)=>[...prev,{type:"client",context:"답변을 생각하고 있습니다..."}])
-        await sleep(1000)
-        setCommentRecord((prev)=>[...prev.slice(0,prev.length-1),{type:"client",context:"답변은 안해."}])
-        //await sendQuery(question,commentRecord);
+    const appendComment = async (e)=>{
+          e.preventDefault();
+          if (!input.trim()) return;
+          setCommentRecord((prev)=>[...prev, {type:"user",content:input}]);
+          setInput('');
+          setCommentRecord((prev)=>[...prev,{type:"model",content:"답변을 생각하고 있습니다..."}])
+          const modelComment = await sendTarotRequest({
+            cards: resultData.cards.map(card => card.id),
+            context:commentRecord,
+            question: resultData.question,
+          });
+          setCommentRecord((prev)=>[...prev.slice(0,prev.length-1),{type:"model",content:modelComment}])
     }
     useEffect(() => {
         if (!scrollRef.current) return;
@@ -95,7 +95,7 @@ export default function Result() {
                 </div>
               ))}
             </div>
-            <div className="text-message" style={{ marginTop: '1.5rem' }}>💫 {summary}</div>
+            <div className="text-message" style={{ marginTop: '1.5rem' }}>💫 {summary?summary:"카드를 해석중입니다..."}</div>
           </div>
         </div>
         <div className="commentBoxContainer">
@@ -103,14 +103,14 @@ export default function Result() {
             if(comment.type === "user"){
                 return(
                     <div key={idx} className="commentBox">
-                        <div className="comment userComment">{comment.context}</div>
+                        <div className="comment userComment">{comment.content}</div>
                     </div>
                 )
             }
             else{
                 return(
                     <div key={idx} className="commentBox">
-                        <div className="comment modelComment">{comment.context}</div>
+                        <div className="comment modelComment">{comment.content}</div>
                     </div>
                 )
             }
@@ -122,7 +122,7 @@ export default function Result() {
       {/* 하단 입력창 */}
         <form className="promptBox" onSubmit={appendComment}>
             <input className="prompt-input" placeholder="질문을 입력하세요" type="text" value={input} onChange={(e)=>{setInput(e.target.value)}}/>
-            <button type="submit" className="prompt-send" >전송</button>
+            <button disabled={isLoading} type="submit" className="prompt-send" >{isLoading?'...':'전송'}</button>
         </form>
     </div>
   );
